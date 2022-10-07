@@ -17,6 +17,7 @@
 .createPhenotypeModel <- function(connectionDetails,
                                   cdmDatabaseSchema,
                                   cohortDatabaseSchema,
+                                  tempEmulationSchema,
                                   cohortTable,
                                   workDatabaseSchema,
                                   xSpecCohortId,
@@ -176,7 +177,7 @@
         databaseDetails <- PatientLevelPrediction::createDatabaseDetails(connectionDetails = connectionDetails,
                                                                          cdmDatabaseSchema = cdmDatabaseSchema,
                                                                          cdmDatabaseName = "CDM",
-                                                                         tempEmulationSchema = cdmDatabaseSchema,
+                                                                         tempEmulationSchema = workDatabaseSchema,
                                                                          cohortDatabaseSchema = workDatabaseSchema,
                                                                          cohortTable = testCohort,
                                                                          outcomeDatabaseSchema = workDatabaseSchema,
@@ -184,6 +185,7 @@
                                                                          cohortId = 0,
                                                                          outcomeIds = xSpecCohortId,
                                                                          cdmVersion = 5)
+        str(databaseDetails)
 
         restrictPlpDataSettings <- PatientLevelPrediction::createRestrictPlpDataSettings(studyStartDate = startDate,
                                                                                          studyEndDate = endDate,
